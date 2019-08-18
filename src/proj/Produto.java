@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	   
+	   //test
 	@Id
 	@GeneratedValue
 	private Integer id;
