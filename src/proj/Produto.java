@@ -20,6 +20,12 @@ public class Produto implements Serializable {
 	private String descricao;
 	private Double preco;
 	
+	/**public Produto(Integer id, String descricao, Double preco){
+		this.id = id;
+		this.descricao = descricao;
+		this.preco = preco;
+	}*/
+	
 
 	public Integer getId() {
 		return this.id;
