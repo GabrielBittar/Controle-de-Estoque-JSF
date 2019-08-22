@@ -21,4 +21,9 @@ version="3.0">
     <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
     <param-value>true</param-value>
 </context-param>
+
+<listener>
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
+	
 </web-app>

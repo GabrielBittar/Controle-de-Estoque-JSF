@@ -1,9 +1,9 @@
 package proj;
 
 import java.io.Serializable;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -11,15 +11,19 @@ import javax.persistence.*;
  *
  */
 @Entity
-public class Produto implements Serializable {
+public class Produto implements Serializable  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String descricao;
 	private String nome;
 	private Integer quantidade;
+	
+	public Produto() {
+		
+	}
 	
 	public Produto(String nome, Integer quantidade, String descricao){
 		this.nome = nome;
@@ -27,7 +31,26 @@ public class Produto implements Serializable {
 		this.quantidade = quantidade;
 	}
 	
+	@OneToOne(fetch = FetchType.LAZY)  
+	
+	protected void doGet(Produto produto) {
+		
+		Produto produtoVar;
+		
+		produtoVar = produto;
+		
+		EntityManagerFactory emf;
+		EntityManager em;
+		
+		emf = Persistence.createEntityManagerFactory("ProjTest");
+		em = emf.createEntityManager();
 
+				em.getTransaction().begin();
+				em.merge(produtoVar);
+				em.getTransaction().commit();
+					
+	}
+	
 	public Integer getId() {
 		return this.id;
 	}

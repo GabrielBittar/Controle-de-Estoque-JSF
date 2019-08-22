@@ -18,7 +18,7 @@
     <!-- Tipo do material: de consumo ou permanente? -->
     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
         <p:outputLabel for="console" value="Tipo:" />
-        <p:selectOneRadio id="console" value="#{radioView.console}" unselectable="true">
+        <p:selectOneRadio id="console" value="#{produtoBean.tipo}" unselectable="true">
             <f:selectItem itemLabel="Consumo" itemValue="Consumo" />
             <f:selectItem itemLabel="Permanente" itemValue="Permanente" />
         </p:selectOneRadio>
@@ -29,21 +29,26 @@
 
 <!-- Dados a enviar para o Bean, que deve persistir no BD -->
     <p:tooltip />    
-    <h:panelGrid id="grid" columns="3" cellpadding="5">
+    <h:panelGrid id="grid" columns="2" cellpadding="3">
     
-        <p:outputLabel for="default" value="Material:" />
-        <p:inputText id="default" required="true" />
-        <p:message for="txt" display="text"  />
+    <!-- Tag "Material" vai para o campo "nome" -->
+
+        <p:outputLabel for="default" value="Material:"/>
+        <p:inputText id="default" required="true" value="#{produtoBean.nome}"/>
+        <p:message for="default" display="text" />
  
         <p:outputLabel for="txt" value="Descricao:" />
-        <p:inputText id="txt" required="true" />
+        <p:inputText id="txt" required="true" value="#{produtoBean.descricao}"/>
         <p:message for="txt" display="text" />
         
+        <!-- "Quantidade" aceita somente Integers -->
+
         <p:outputLabel for="tt" value="Quantidade:" />
-        <p:inputText id="tt" required="true" />
+        <p:inputText id="tt" required="true" value="#{produtoBean.quantidade}"/>
         <p:message for="tt" display="text" />
+
     </h:panelGrid>
-            <h:commandButton id="submitButton" value="Confirmar" action="#{produtoBean.getNome}"/>
+            <h:commandButton id="submitButton" value="Confirmar" action="#{produtoBean.persistProduto}" />
         </p:panel>
     </h:form>
     <br />
