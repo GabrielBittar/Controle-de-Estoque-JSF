@@ -13,18 +13,19 @@ import javax.persistence.*;
 @Entity
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	   //test
+
 	@Id
 	@GeneratedValue
 	private Integer id;
 	private String descricao;
-	private Double preco;
+	private String nome;
+	private Integer quantidade;
 	
-	/**public Produto(Integer id, String descricao, Double preco){
-		this.id = id;
+	public Produto(String nome, Integer quantidade, String descricao){
+		this.nome = nome;
 		this.descricao = descricao;
-		this.preco = preco;
-	}*/
+		this.quantidade = quantidade;
+	}
 	
 
 	public Integer getId() {
@@ -34,6 +35,7 @@ public class Produto implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}   
+	
 	public String getDescricao() {
 		return this.descricao;
 	}
@@ -41,12 +43,19 @@ public class Produto implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}   
-	public Double getPreco() {
-		return this.preco;
+	public Integer getQuantidade() {
+		return this.quantidade;
 	}
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
    
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 }

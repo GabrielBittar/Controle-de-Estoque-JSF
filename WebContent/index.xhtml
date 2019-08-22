@@ -8,22 +8,42 @@
     <title>Page</title>
 </h:head>
 <h:body>
+
+<!-- God antipattern a evitar -->
     <h:form id="mainForm">
-        <p:panel header="Aquisicao de Produtos" style="text-align:center">
-        
-        <p:growl id="msg" />
-            <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">    
- <p:selectBooleanCheckbox value="#{produtoBean.value}" itemLabel="Ajax">
-            <p:ajax update="msg" listener="#{produtoBean.addMessage}" />
-        </p:selectBooleanCheckbox>
-        
-        <p:selectBooleanCheckbox value="#{produtoBean.value}" itemLabel="Ajax">
-            <p:ajax update="msg" listener="#{produtoBean.addMessage}" />
-        </p:selectBooleanCheckbox>
+    
+    <!-- Titulo -->
+        <p:panel header="Aquisicao de Materiais" style="text-align:center">
+                
+    <!-- Tipo do material: de consumo ou permanente? -->
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="console" value="Tipo:" />
+        <p:selectOneRadio id="console" value="#{radioView.console}" unselectable="true">
+            <f:selectItem itemLabel="Consumo" itemValue="Consumo" />
+            <f:selectItem itemLabel="Permanente" itemValue="Permanente" />
+        </p:selectOneRadio>
     </h:panelGrid>
     
-            <p:button id="submit-button" value="Confirmar" action="index.xhtml"/>
+ <!-- Separador entre o tipo de material e os dados --> 
+<p:separator />
 
+<!-- Dados a enviar para o Bean, que deve persistir no BD -->
+    <p:tooltip />    
+    <h:panelGrid id="grid" columns="3" cellpadding="5">
+    
+        <p:outputLabel for="default" value="Material:" />
+        <p:inputText id="default" required="true" />
+        <p:message for="txt" display="text"  />
+ 
+        <p:outputLabel for="txt" value="Descricao:" />
+        <p:inputText id="txt" required="true" />
+        <p:message for="txt" display="text" />
+        
+        <p:outputLabel for="tt" value="Quantidade:" />
+        <p:inputText id="tt" required="true" />
+        <p:message for="tt" display="text" />
+    </h:panelGrid>
+            <h:commandButton id="submitButton" value="Confirmar" action="#{produtoBean.getNome}"/>
         </p:panel>
     </h:form>
     <br />

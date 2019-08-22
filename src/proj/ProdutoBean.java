@@ -8,9 +8,13 @@ import javax.faces.context.FacesContext;
 
 public class ProdutoBean {
 
-	private String teste = "foo";
-	private Integer beta = 96;
+	private String nome;
+	private String descricao;
+	private Integer quantidade;
+	
 	private Boolean value = false;
+	
+	Produto produto = new Produto(nome, quantidade, descricao);
 	
 	 public Boolean getValue() {
 	        return value;
@@ -25,12 +29,4 @@ public class ProdutoBean {
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
 	    }
 
-		
-	public String getTeste() {
-		return "bar";
-	}
-
-	public Integer getBeta() {
-		return 4472;
-	}
 }
