@@ -1,6 +1,5 @@
 package proj;
 
-import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 
@@ -11,63 +10,28 @@ import javax.persistence.*;
  *
  */
 @Entity
-public class Produto implements Serializable  {
-	private static final long serialVersionUID = 1L;
+public class Produto{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	private String descricao;
+	
+	@Column	
 	private String nome;
+	@Column
 	private Integer quantidade;
-	
-	public Produto() {
-		
-	}
-	
-	public Produto(String nome, Integer quantidade, String descricao){
-		this.nome = nome;
-		this.descricao = descricao;
-		this.quantidade = quantidade;
-	}
-	
-	@OneToOne(fetch = FetchType.LAZY)  
-	
-	protected void doGet(Produto produto) {
-		
-		Produto produtoVar;
-		
-		produtoVar = produto;
-		
-		EntityManagerFactory emf;
-		EntityManager em;
-		
-		emf = Persistence.createEntityManagerFactory("ProjTest");
-		em = emf.createEntityManager();
-
-				em.getTransaction().begin();
-				em.merge(produtoVar);
-				em.getTransaction().commit();
-					
-	}
-	
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}   
+	@Column(nullable=true)
+	private String descricao;
 	
 	public String getDescricao() {
-		return this.descricao;
+		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}   
 	public Integer getQuantidade() {
-		return this.quantidade;
+		return quantidade;
 	}
 
 	public void setQuantidade(Integer quantidade) {
@@ -75,7 +39,7 @@ public class Produto implements Serializable  {
 	}
    
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 	
 	public void setNome(String nome) {

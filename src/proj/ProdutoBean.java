@@ -1,55 +1,36 @@
 package proj;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 public class ProdutoBean{
 
-	private String nome;
-	private String descricao;
-	private Integer quantidade;
-	private static String tipo;
+	private ProdutoDAO produtoDAO = new ProdutoDAO();
+	private Produto produto = new Produto();
+	//private boolean responseComplete;
 
-	
-	public Produto produto = new Produto(nome, quantidade, descricao);
-	
-	    public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		produto.setNome(nome);
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		produto.setDescricao(descricao);
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		produto.setQuantidade(quantidade);
-	}
-
-	public String getTipo() {
-	return tipo;
-	}
-
-	public void setTipo(String tipo) {
-	ProdutoBean.tipo = tipo;
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 	
-	public void persistProduto() {
-		
-		produto.setDescricao(this.descricao);
-		produto.setNome(this.nome);
-		produto.setQuantidade(this.quantidade);
-		produto.doGet(this.produto);
-		
-		System.out.println(ProdutoBean.tipo);
+	public Produto getProduto() {
+		return produto;
+	}
+	
+	public String enviar() {
+		produtoDAO.insereProduto(produto);
+		if(produto == null) {
+			produto = new Produto();
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Produto nao encontrado!",
+							"Erro na insercao!"));
+			return null;
+		}else {
+			//responseComplete = FacesContext.getResponseComplete();
+			return "/index.xhtml";
+		}
 	}
 
+	
 }

@@ -15,14 +15,7 @@
     <!-- Titulo -->
         <p:panel header="Aquisicao de Materiais" style="text-align:center">
                 
-    <!-- Tipo do material: de consumo ou permanente? -->
-    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-        <p:outputLabel for="console" value="Tipo:" />
-        <p:selectOneRadio id="console" value="#{produtoBean.tipo}" unselectable="true">
-            <f:selectItem itemLabel="Consumo" itemValue="Consumo" />
-            <f:selectItem itemLabel="Permanente" itemValue="Permanente" />
-        </p:selectOneRadio>
-    </h:panelGrid>
+
     
  <!-- Separador entre o tipo de material e os dados --> 
 <p:separator />
@@ -33,22 +26,22 @@
     
     <!-- Tag "Material" vai para o campo "nome" -->
 
-        <p:outputLabel for="default" value="Material:"/>
-        <p:inputText id="default" required="true" value="#{produtoBean.nome}"/>
-        <p:message for="default" display="text" />
+        <p:outputLabel for="nome" value="Material:"/>
+        <p:inputText id="nome" required="true" value="#{produtoBean.produto.nome}"/>
+        <p:message for="nome" display="text" />
  
-        <p:outputLabel for="txt" value="Descricao:" />
-        <p:inputText id="txt" required="true" value="#{produtoBean.descricao}"/>
-        <p:message for="txt" display="text" />
+        <p:outputLabel for="descricao" value="Descricao:" />
+        <p:inputText id="descricao" required="true" value="#{produtoBean.produto.descricao}"/>
+        <p:message for="descricao" display="text" />
         
         <!-- "Quantidade" aceita somente Integers -->
 
-        <p:outputLabel for="tt" value="Quantidade:" />
-        <p:inputText id="tt" required="true" value="#{produtoBean.quantidade}"/>
-        <p:message for="tt" display="text" />
+        <p:outputLabel for="quantidade" value="Quantidade:" />
+        <p:inputText id="quantidade" required="true" value="#{produtoBean.produto.quantidade}"/>
+        <p:message for="quantidade" display="text" />
 
     </h:panelGrid>
-            <h:commandButton id="submitButton" value="Confirmar" action="#{produtoBean.persistProduto}" />
+            <h:commandButton id="submitButton" icon="ui-icon-star" value="Confirmar" action="#{produtoBean.enviar}" />
         </p:panel>
     </h:form>
     <br />
