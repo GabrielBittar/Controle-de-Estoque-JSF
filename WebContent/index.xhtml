@@ -22,7 +22,7 @@
 
 <!-- Dados a enviar para o Bean, que deve persistir no BD -->
     <p:tooltip />    
-    <h:panelGrid id="grid" columns="2" cellpadding="3">
+    <h:panelGrid id="grid" columns="7" cellpadding="5">
     
     <!-- Tag "Material" vai para o campo "nome" -->
 
@@ -41,7 +41,7 @@
         <p:message for="quantidade" display="text" />
 
     </h:panelGrid>
-            <h:commandButton id="submitButton" icon="ui-icon-star" value="Confirmar" action="#{produtoBean.enviar}" />
+            <h:commandButton id="submitButton" value="Confirmar" action="#{produtoBean.enviar}" onclick="window.location.replace('index.xhtml')" />
         </p:panel>
     </h:form>
     <br />

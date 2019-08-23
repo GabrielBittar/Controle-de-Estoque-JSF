@@ -7,7 +7,6 @@ public class ProdutoBean{
 
 	private ProdutoDAO produtoDAO = new ProdutoDAO();
 	private Produto produto = new Produto();
-	//private boolean responseComplete;
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
@@ -27,7 +26,6 @@ public class ProdutoBean{
 							"Erro na insercao!"));
 			return null;
 		}else {
-			//responseComplete = FacesContext.getResponseComplete();
 			return "/index.xhtml";
 		}
 	}
