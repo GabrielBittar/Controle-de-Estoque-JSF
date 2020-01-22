@@ -42,9 +42,10 @@
 
     </h:panelGrid>
             <h:commandButton id="submitButton" value="Confirmar" action="#{produtoBean.enviar}" onclick="window.location.replace('index.xhtml')" />
-        </p:panel>
+            </p:panel>
     </h:form>
     <br />
-
+<h:commandButton id="getButton" value="Obter" action="#{produtoBean.obter}" onclick="window.location.replace('lista.xhtml')" />
+        
 </h:body>
 </html>

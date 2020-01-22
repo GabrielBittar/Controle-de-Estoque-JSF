@@ -29,6 +29,10 @@ public class ProdutoBean{
 			return "/index.xhtml";
 		}
 	}
+	
+	public String obter() {
+		return "/lista.xhtml";
+	}
 
 	
 }

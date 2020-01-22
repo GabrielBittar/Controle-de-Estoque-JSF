@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+    <title>Page</title>
+</h:head>
+<h:body>
+
+<!-- God antipattern a evitar -->
+    <h:form id="mainForm">
+    
+    <!-- Titulo -->
+        <p:panel header="Lista de Materiais" style="text-align:center">
+              
+ <!-- Separador entre o tipo de material e os dados --> 
+<p:separator />
+
+<!-- Dados a enviar para o Bean, que deve persistir no BD -->
+    <p:tooltip />    
+    <h:panelGrid id="grid" columns="7" cellpadding="5">
+    
+    
+    </h:panelGrid>
+            </p:panel>
+    </h:form>
+    <br />
+<h:commandButton id="getButton" value="Obter" action="#{produtoBean.obter}" onclick="window.location.replace('lista.xhtml')" />
+        
+</h:body>
+</html>
